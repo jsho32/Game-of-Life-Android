@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+                android:name="com.shoresdevelopment.gameoflife.game.GameActivity"
+                android:label="@string/app_name" />
+        <activity
+                android:name="com.shoresdevelopment.gameoflife.game.AboutActivity"
+                android:label="@string/app_name" />
     </application>
 
 </manifest>
