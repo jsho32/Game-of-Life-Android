@@ -1,8 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:background="#575757"
+              android:orientation="vertical"
+              tools:context=".MainActivity">
+
+    <LinearLayout android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:background="#aa0038de"
+                  android:gravity="center"
+                  android:padding="@dimen/activity_default_margin">
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textSize="@dimen/header_text_size"
+                  android:text="@string/game_header"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/activity_default_margin">
+
+        <GridView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lifeGrid"
+                android:numColumns="20"
+                android:layout_marginLeft="@dimen/activity_default_margin"
+                android:layout_marginRight="@dimen/activity_default_margin"
+                android:padding="10dp"
+                android:background="#5a575757"
+                android:gravity="center"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="1dp"
+                android:horizontalSpacing="2dp" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:padding="@dimen/activity_default_margin"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/activity_default_margin"
+                android:text="@string/start_game"/>
+
+    </LinearLayout>
 
 </LinearLayout>

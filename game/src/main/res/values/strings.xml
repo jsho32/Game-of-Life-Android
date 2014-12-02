@@ -5,6 +5,7 @@
     <string name="start_game">Game Start</string>
     <string name="about_game">About</string>
     <string name="main_header">Main Menu</string>
+    <string name="game_header">Game of Life</string>
     <string name="action_settings">Settings</string>
 
 </resources>
