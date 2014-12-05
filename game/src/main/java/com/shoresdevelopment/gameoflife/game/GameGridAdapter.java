@@ -43,6 +43,13 @@ public class GameGridAdapter extends BaseAdapter {
         cell.setClickable(true);
         cell.setBackgroundColor(Color.GRAY);
         cell.setLayoutParams(new AbsListView.LayoutParams(35, 50));
+
+        if (data[position] == 1) {
+            cell.setBackgroundColor(Color.RED);
+        } else {
+            cell.setBackgroundColor(Color.GRAY);
+        }
+
         cell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +62,7 @@ public class GameGridAdapter extends BaseAdapter {
                 }
             }
         });
+
         return cell;
     }
 
