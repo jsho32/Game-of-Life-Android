@@ -47,7 +47,20 @@
                 android:padding="@dimen/activity_default_margin"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="@dimen/activity_default_margin"
-                android:text="@string/start_game"/>
+                android:text="@string/start_game"
+                android:id="@+id/game_start"
+                android:clickable="true"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:padding="@dimen/activity_default_margin"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/activity_default_margin"
+                android:text="@string/start_game"
+                android:id="@+id/game_stop"
+                android:clickable="true"/>
 
     </LinearLayout>
 
