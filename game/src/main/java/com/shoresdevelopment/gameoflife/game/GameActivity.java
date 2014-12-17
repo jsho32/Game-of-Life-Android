@@ -9,7 +9,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 public class GameActivity extends Activity{
-    private int boardSize = 400;
+    private final int boardSize = 400;
     private int[] boardArray;
     private GridView lifeGrid;
     private TextView gameStart;
@@ -18,6 +18,7 @@ public class GameActivity extends Activity{
     GameGridAdapter gridAdapter;
     LifeManager lifeManager;
 
+    /** Called when activity is first created */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +44,7 @@ public class GameActivity extends Activity{
         handler.post(runnable);
     }
 
+    /** Sets initial settings for the grid that contains life cells */
     private void initializeGrid() {
         lifeGrid = (GridView) findViewById(R.id.lifeGrid);
         gridAdapter = new GameGridAdapter(GameActivity.this, boardArray);
@@ -52,6 +54,7 @@ public class GameActivity extends Activity{
         lifeGrid.setHorizontalSpacing(1);
     }
 
+    /** Fills array containing life values with all dead cells (0 is dead) */
     private void fillGridArray() {
         boardArray = new int[boardSize];
         for (int i = 0; i < boardSize; i++) {
@@ -59,6 +62,7 @@ public class GameActivity extends Activity{
         }
     }
 
+    /** Initialize all buttons and sets on click listeners */
     private void initializeButtons() {
         gameStart = (TextView) findViewById(R.id.game_start);
         gameStart.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +95,7 @@ public class GameActivity extends Activity{
         });
     }
 
+    /** Sets each view within grid to clickable state true or false */
     private void setGridClickable(boolean clickable) {
         for (int i = 0; i < lifeGrid.getChildCount(); i++) {
             lifeGrid.getChildAt(i).setClickable(clickable);
