@@ -13,6 +13,7 @@ public class MainActivity extends ActionBarActivity {
     TextView start;
     TextView about;
 
+    /** Called when activity is created */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +21,7 @@ public class MainActivity extends ActionBarActivity {
         initializeTextViews();
     }
 
-
+    /** Creates the options menu */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -28,6 +29,7 @@ public class MainActivity extends ActionBarActivity {
         return true;
     }
 
+    /** When options menu item is selected */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -43,6 +45,7 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /** Initializes text views and sets on click listeners with intents to respective activities */
     private void initializeTextViews() {
         start = (TextView) findViewById(R.id.start);
         start.setOnClickListener(new View.OnClickListener() {
