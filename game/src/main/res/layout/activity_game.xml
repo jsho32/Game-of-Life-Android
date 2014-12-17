@@ -31,37 +31,44 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/lifeGrid"
                 android:numColumns="20"
-                android:layout_marginLeft="@dimen/activity_default_margin"
-                android:layout_marginRight="@dimen/activity_default_margin"
                 android:padding="10dp"
                 android:background="#5a575757"
                 android:gravity="center"
                 android:stretchMode="columnWidth"
-                android:verticalSpacing="1dp"
+                android:verticalSpacing="2dp"
                 android:horizontalSpacing="2dp" />
 
-        <TextView
+        <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#000000"
-                android:padding="@dimen/activity_default_margin"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="@dimen/activity_default_margin"
-                android:text="@string/start_game"
-                android:id="@+id/game_start"
-                android:clickable="true"/>
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/activity_default_margin">
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#000000"
-                android:padding="@dimen/activity_default_margin"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="@dimen/activity_default_margin"
-                android:text="@string/start_game"
-                android:id="@+id/game_stop"
-                android:clickable="true"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#000000"
+                    android:padding="@dimen/activity_default_margin"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="@dimen/activity_default_margin"
+                    android:text="@string/start_game"
+                    android:textColor="#ffffff"
+                    android:id="@+id/game_start"
+                    android:clickable="true"/>
 
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#000000"
+                    android:padding="@dimen/activity_default_margin"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="@dimen/activity_default_margin"
+                    android:text="@string/stop_game"
+                    android:textColor="#ffffff"
+                    android:id="@+id/game_stop"
+                    android:clickable="true"/>
+
+        </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>
