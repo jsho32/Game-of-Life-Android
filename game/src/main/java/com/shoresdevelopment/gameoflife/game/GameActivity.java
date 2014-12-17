@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -37,7 +36,6 @@ public class GameActivity extends Activity{
             public void run() {
                 if (isRunning) {
                     lifeManager.setLife();
-                    //lifeGrid = lifeManager.getGridView();
                     handler.postDelayed(this, 1000);
                 }
             }
@@ -69,9 +67,12 @@ public class GameActivity extends Activity{
                 isRunning = true;
                 gameRun();
                 gameStart.setBackgroundColor(Color.GREEN);
+                gameStart.setTextColor(Color.BLACK);
                 gameStart.setClickable(false);
                 gameStop.setClickable(true);
                 gameStop.setBackgroundColor(Color.BLACK);
+                gameStop.setTextColor(Color.WHITE);
+                setGridClickable(false);
             }
         });
         gameStop = (TextView) findViewById(R.id.game_stop);
@@ -80,10 +81,19 @@ public class GameActivity extends Activity{
             public void onClick(View v) {
                 isRunning = false;
                 gameStop.setBackgroundColor(Color.RED);
+                gameStop.setTextColor(Color.BLACK);
                 gameStop.setClickable(false);
                 gameStart.setClickable(true);
                 gameStart.setBackgroundColor(Color.BLACK);
+                gameStart.setTextColor(Color.WHITE);
+                setGridClickable(true);
             }
         });
+    }
+
+    private void setGridClickable(boolean clickable) {
+        for (int i = 0; i < lifeGrid.getChildCount(); i++) {
+            lifeGrid.getChildAt(i).setClickable(clickable);
+        }
     }
 }
