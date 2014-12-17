@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.13.0'
+        classpath 'com.android.tools.build:gradle:0.14.2'
     }
 }
 apply plugin: 'com.android.application'
@@ -18,7 +18,7 @@ android {
 
     defaultConfig {
         applicationId "com.shoresdevelopment.gameoflife.game"
-        minSdkVersion 9
+        minSdkVersion 13
         targetSdkVersion 20
         versionCode 1
         versionName "1.0"
