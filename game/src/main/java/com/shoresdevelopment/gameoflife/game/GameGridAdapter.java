@@ -15,6 +15,7 @@ public class GameGridAdapter extends BaseAdapter {
     private int[] data = null;
     int cellDimension;
 
+    /** Constructor */
     public GameGridAdapter(Context context, int[] data) {
         this.context = context;
         this.data = data;
@@ -25,21 +26,25 @@ public class GameGridAdapter extends BaseAdapter {
         cellDimension = (size.x - 32) / 25;
     }
 
+    /** Gets the number of children */
     @Override
     public int getCount() {
         return data.length;
     }
 
+    /** Get the item at a position index */
     @Override
     public Object getItem(int position) {
         return data[position];
     }
 
+    /** Gets the ID of item at a position */
     @Override
     public long getItemId(int position) {
         return 0;
     }
 
+    /** Sets and gets the view of an item associated with a position in data array */
     @Override
     public View getView(final int position, final View view, final ViewGroup parent) {
         final View cell;
