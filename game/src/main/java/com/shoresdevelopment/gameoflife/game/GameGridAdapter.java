@@ -2,19 +2,27 @@ package com.shoresdevelopment.gameoflife.game;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Point;
+import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 
 public class GameGridAdapter extends BaseAdapter {
     private Context context;
     private int[] data = null;
+    int cellDimension;
 
     public GameGridAdapter(Context context, int[] data) {
         this.context = context;
         this.data = data;
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = windowManager.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        cellDimension = (size.x - 32) / 25;
     }
 
     @Override
@@ -42,7 +50,7 @@ public class GameGridAdapter extends BaseAdapter {
         }
         cell.setClickable(true);
         cell.setBackgroundColor(Color.GRAY);
-        cell.setLayoutParams(new AbsListView.LayoutParams(35, 50));
+        cell.setLayoutParams(new AbsListView.LayoutParams(cellDimension, cellDimension));
 
         if (data[position] == 1) {
             cell.setBackgroundColor(Color.RED);
