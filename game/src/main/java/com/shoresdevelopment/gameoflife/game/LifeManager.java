@@ -10,29 +10,33 @@ public class LifeManager {
     private GameGridAdapter gridAdapter;
     private final int columnCount = 20;
     private final int boardSize = 400;
-    private Map<Integer, Integer> cells;
+    private Map<Integer, Integer> nextGeneration;
 
+    /** Constructor */
     public LifeManager(GridView gridView, GameGridAdapter gridAdapter) {
         this.gridView = gridView;
         this.gridAdapter = gridAdapter;
     }
 
-    private void initializeCellsMap() {
-        cells = new HashMap<Integer, Integer>();
+    /** Sets next generation map to current grid generation */
+    private void initializeNextGenerationMap() {
+        nextGeneration = new HashMap<Integer, Integer>();
         for (int i = 0; i < boardSize; i++) {
-            cells.put(i, gridAdapter.getPositionValue(i));
+            nextGeneration.put(i, gridAdapter.getPositionValue(i));
         }
     }
 
+    /** Sets next generation to grid, from next generation map */
     public void setLife() {
-        initializeCellsMap();
+        initializeNextGenerationMap();
         getNewLife();
         for (int i = 0; i < boardSize; i++) {
-            gridAdapter.setPositionValue(i, cells.get(i));
+            gridAdapter.setPositionValue(i, nextGeneration.get(i));
             gridAdapter.getView(i, gridView.getChildAt(i), gridView);
         }
     }
 
+    /** Evaluates each cell and sets life accordingly, to next generation map */
     public void getNewLife() {
         for(int i = 0; i < boardSize; i++) {
             int count = 0;
@@ -87,13 +91,13 @@ public class LifeManager {
                 if (gridAdapter.getPositionValue(i + columnCount + 1) == 1) count++;
             }
 
-            if (cells.get(i) == 1) {
+            if (nextGeneration.get(i) == 1) {
                 if (count != 2 && count != 3) {
-                    cells.put(i, 0);
+                    nextGeneration.put(i, 0);
                 }
             } else {
                 if (count == 3) {
-                    cells.put(i, 1);
+                    nextGeneration.put(i, 1);
                 }
             }
         }
