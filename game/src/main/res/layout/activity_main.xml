@@ -2,51 +2,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#575757"
+    android:background="@drawable/cells_vert"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <LinearLayout android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                  android:background="#aa0038de"
-                  android:gravity="center"
-                  android:padding="@dimen/activity_default_margin">
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#EE575757"
+            android:gravity="center"
+            android:padding="@dimen/activity_default_margin">
 
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:textSize="@dimen/header_text_size"
-                  android:text="@string/main_header"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/header_text_size"
+                android:text="@string/main_header"
+                android:textStyle="bold"/>
 
     </LinearLayout>
 
-    <LinearLayout android:layout_width="wrap_content"
-                  android:layout_height="fill_parent"
-                  android:layout_gravity="center_horizontal"
-                  android:gravity="center"
-                  android:orientation="vertical"
-                  android:layout_margin="@dimen/activity_default_margin">
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/activity_default_margin">
 
-        <TextView android:text="@string/start_game"
-                  android:id="@+id/start"
-                  android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                  android:gravity="center"
-                  android:layout_margin="@dimen/activity_default_margin"
-                  android:padding="@dimen/activity_default_margin"
-                  android:background="#aabb0e1f"
-                  android:textSize="@dimen/button_text_size"
-                  android:clickable="true"/>
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/activity_default_margin"
+                android:padding="1dp"
+                android:background="#ffffff">
 
-        <TextView android:text="@string/about_game"
-                  android:id="@+id/about"
-                  android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                  android:gravity="center"
-                  android:padding="@dimen/activity_default_margin"
-                  android:layout_margin="@dimen/activity_default_margin"
-                  android:background="#aabb0e1f"
-                  android:textSize="@dimen/button_text_size"
-                  android:clickable="true"/>
+            <TextView
+                    android:text="@string/start_game"
+                    android:id="@+id/start"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/activity_default_margin"
+                    android:background="#000000"
+                    android:textSize="@dimen/button_text_size"
+                    android:textColor="#ffffff"
+                    android:clickable="true"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/activity_default_margin"
+                android:padding="1dp"
+                android:background="#ffffff">
+
+            <TextView
+                    android:text="@string/about_game"
+                    android:id="@+id/about"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/activity_default_margin"
+                    android:background="#000000"
+                    android:textSize="@dimen/button_text_size"
+                    android:textColor="#ffffff"
+                    android:clickable="true"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
