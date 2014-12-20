@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/list_item_view"
+              android:orientation="horizontal"
+              android:layout_gravity="center"
+              android:gravity="center"
+              android:padding="1dp"
+              android:background="#ffffff">
+
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="@dimen/activity_default_margin"
+            android:layout_gravity="center_horizontal"
+            android:text="some child"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:id="@+id/list_item"
+            android:clickable="true"/>
+
+</LinearLayout>
