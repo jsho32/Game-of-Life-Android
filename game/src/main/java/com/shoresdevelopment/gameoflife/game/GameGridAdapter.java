@@ -13,17 +13,19 @@ import android.widget.BaseAdapter;
 public class GameGridAdapter extends BaseAdapter {
     private Context context;
     private int[] data = null;
-    int cellDimension;
+    private int columnCount;
+    private int cellDimension;
 
     /** Constructor */
-    public GameGridAdapter(Context context, int[] data) {
+    public GameGridAdapter(Context context, int[] data, int columnCount) {
         this.context = context;
         this.data = data;
+        this.columnCount = columnCount;
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = windowManager.getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        cellDimension = (size.x - 32) / 25;
+        cellDimension = (size.x - (columnCount*2)) / (columnCount + (columnCount/4));
     }
 
     /** Gets the number of children */
@@ -55,7 +57,7 @@ public class GameGridAdapter extends BaseAdapter {
         }
         cell.setClickable(true);
         cell.setBackgroundColor(Color.GRAY);
-        cell.setLayoutParams(new AbsListView.LayoutParams(cellDimension, cellDimension));
+        cell.setLayoutParams(new AbsListView.LayoutParams((int) cellDimension, (int) cellDimension));
 
         if (data[position] == 1) {
             cell.setBackgroundColor(Color.RED);
