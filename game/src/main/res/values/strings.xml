@@ -4,6 +4,9 @@
     <string name="app_name">GameOfLife</string>
     <string name="start_game">Game Start</string>
     <string name="stop_game">Game Stop</string>
+    <string name="shapes">Shapes</string>
+    <string name="speed">Speed</string>
+    <string name="board_size">Board Size</string>
     <string name="about_game">About</string>
     <string name="main_header">Main Menu</string>
     <string name="game_header">Game of Life</string>
