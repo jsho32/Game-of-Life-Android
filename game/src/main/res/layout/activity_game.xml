@@ -2,20 +2,107 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="#575757"
+              android:background="@drawable/cells_vert"
               android:orientation="vertical"
               tools:context=".MainActivity">
 
-    <LinearLayout android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                  android:background="#aa0038de"
-                  android:gravity="center"
-                  android:padding="@dimen/activity_default_margin">
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#EE575757"
+            android:gravity="center"
+            android:padding="@dimen/activity_default_margin">
 
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:textSize="@dimen/header_text_size"
-                  android:text="@string/game_header"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/header_text_size"
+                android:text="@string/game_header"
+                android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/activity_default_margin">
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/activity_default_margin"
+                android:layout_marginStart="@dimen/activity_default_margin"
+                android:layout_marginRight="@dimen/activity_default_margin"
+                android:layout_marginEnd="@dimen/activity_default_margin"
+                android:padding="1dp"
+                android:background="#ffffff">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#000000"
+                    android:padding="@dimen/activity_default_margin"
+                    android:layout_gravity="center_horizontal"
+                    android:text="shapes"
+                    android:textColor="#ffffff"
+                    android:id="@+id/shapes"
+                    android:clickable="true"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/activity_default_margin"
+                android:layout_marginStart="@dimen/activity_default_margin"
+                android:layout_marginRight="@dimen/activity_default_margin"
+                android:layout_marginEnd="@dimen/activity_default_margin"
+                android:padding="1dp"
+                android:background="#ffffff">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#000000"
+                    android:padding="@dimen/activity_default_margin"
+                    android:layout_gravity="center_horizontal"
+                    android:text="speed"
+                    android:textColor="#ffffff"
+                    android:id="@+id/speed"
+                    android:clickable="true"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/activity_default_margin"
+                android:layout_marginStart="@dimen/activity_default_margin"
+                android:layout_marginRight="@dimen/activity_default_margin"
+                android:layout_marginEnd="@dimen/activity_default_margin"
+                android:padding="1dp"
+                android:background="#ffffff">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#000000"
+                    android:padding="@dimen/activity_default_margin"
+                    android:layout_gravity="center_horizontal"
+                    android:text="generations"
+                    android:textColor="#ffffff"
+                    android:id="@+id/generations"
+                    android:clickable="true"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -45,29 +132,49 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/activity_default_margin">
 
-            <TextView
+            <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#000000"
-                    android:padding="@dimen/activity_default_margin"
-                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
                     android:layout_margin="@dimen/activity_default_margin"
-                    android:text="@string/start_game"
-                    android:textColor="#ffffff"
-                    android:id="@+id/game_start"
-                    android:clickable="true"/>
+                    android:padding="1dp"
+                    android:background="#ffffff">
 
-            <TextView
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#000000"
+                        android:padding="@dimen/activity_default_margin"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/start_game"
+                        android:textColor="#ffffff"
+                        android:id="@+id/game_start"
+                        android:clickable="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#000000"
-                    android:padding="@dimen/activity_default_margin"
-                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
                     android:layout_margin="@dimen/activity_default_margin"
-                    android:text="@string/stop_game"
-                    android:textColor="#ffffff"
-                    android:id="@+id/game_stop"
-                    android:clickable="true"/>
+                    android:padding="1dp"
+                    android:background="#ffffff">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#000000"
+                        android:padding="@dimen/activity_default_margin"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/stop_game"
+                        android:textColor="#ffffff"
+                        android:id="@+id/game_stop"
+                        android:clickable="true"/>
+
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>
