@@ -8,14 +8,16 @@ import java.util.Map;
 public class LifeManager {
     private GridView gridView;
     private GameGridAdapter gridAdapter;
-    private final int columnCount = 20;
-    private final int boardSize = 400;
+    private int columnCount;
+    private int boardSize;
     private Map<Integer, Integer> nextGeneration;
 
     /** Constructor */
-    public LifeManager(GridView gridView, GameGridAdapter gridAdapter) {
+    public LifeManager(GridView gridView, GameGridAdapter gridAdapter, int boardSize, int columnCount) {
         this.gridView = gridView;
         this.gridAdapter = gridAdapter;
+        this.columnCount = columnCount;
+        this.boardSize = boardSize;
     }
 
     /** Sets next generation map to current grid generation */
