@@ -47,7 +47,7 @@
                     android:background="#000000"
                     android:padding="@dimen/activity_default_margin"
                     android:layout_gravity="center_horizontal"
-                    android:text="shapes"
+                    android:text="@string/shapes"
                     android:textColor="#ffffff"
                     android:id="@+id/shapes"
                     android:clickable="true"/>
@@ -72,9 +72,9 @@
                     android:background="#000000"
                     android:padding="@dimen/activity_default_margin"
                     android:layout_gravity="center_horizontal"
-                    android:text="speed"
+                    android:text="@string/speed"
                     android:textColor="#ffffff"
-                    android:id="@+id/speed"
+                    android:id="@+id/generation_speed"
                     android:clickable="true"/>
 
         </LinearLayout>
@@ -97,9 +97,9 @@
                     android:background="#000000"
                     android:padding="@dimen/activity_default_margin"
                     android:layout_gravity="center_horizontal"
-                    android:text="generations"
+                    android:text="@string/board_size"
                     android:textColor="#ffffff"
-                    android:id="@+id/generations"
+                    android:id="@+id/board_size"
                     android:clickable="true"/>
 
         </LinearLayout>
