@@ -81,4 +81,8 @@ public class DropDownManager {
     public int getSelected() {
         return currentSelection;
     }
+
+    public void setCurrentSelection(int currentSelection) {
+        this.currentSelection = currentSelection;
+    }
 }
