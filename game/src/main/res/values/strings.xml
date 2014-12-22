@@ -2,8 +2,10 @@
 <resources>
 
     <string name="app_name">GameOfLife</string>
-    <string name="start_game">Game Start</string>
-    <string name="stop_game">Game Stop</string>
+    <string name="start_game_main">Game Start</string>
+    <string name="start_game">Start</string>
+    <string name="stop_game">Stop</string>
+    <string name="clear_game">Clear</string>
     <string name="shapes">Shapes</string>
     <string name="speed">Speed</string>
     <string name="board_size">Board Size</string>
