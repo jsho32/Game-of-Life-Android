@@ -44,7 +44,7 @@ public class GameActivity extends Activity{
         setLists();
         setMaps();
         setBoardSize(boardSizeMap.get(1));
-        setSpeed(speedMap.get(1));
+        setSpeed(speedMap.get(2));
         initializeFeaturesButtons();
         fillGridArray();
         initializeGrid();
@@ -71,8 +71,10 @@ public class GameActivity extends Activity{
         sizeList = new ArrayList<String>();
         sizeList.add("10 X 10");
         sizeList.add("20 X 20");
+        sizeList.add("30 X 30");
+        sizeList.add("40 X 40");
         sizeList.add("50 X 50");
-        sizeList.add("100 X 100");
+        sizeList.add("60 X 60");
 
         speedList = new ArrayList<String>();
         speedList.add("Really Slow");
@@ -87,8 +89,10 @@ public class GameActivity extends Activity{
         boardSizeMap = new HashMap<Integer, Integer>();
         boardSizeMap.put(0, 10);
         boardSizeMap.put(1, 20);
-        boardSizeMap.put(2, 50);
-        boardSizeMap.put(3, 100);
+        boardSizeMap.put(2, 30);
+        boardSizeMap.put(3, 40);
+        boardSizeMap.put(4, 50);
+        boardSizeMap.put(5, 60);
 
         speedMap = new HashMap<Integer, Integer>();
         speedMap.put(0, 3000);
@@ -123,10 +127,8 @@ public class GameActivity extends Activity{
         lifeGrid = (GridView) findViewById(R.id.lifeGrid);
         gridAdapter = new GameGridAdapter(GameActivity.this, boardArray, boardSizeMap.get(boardKey));
         lifeGrid.setAdapter(gridAdapter);
-        lifeGrid.setBackgroundColor(Color.BLACK);
+        lifeGrid.setBackgroundColor(Color.TRANSPARENT);
         lifeGrid.setNumColumns(boardSizeMap.get(boardKey));
-        lifeGrid.setVerticalSpacing(1);
-        lifeGrid.setHorizontalSpacing(1);
     }
 
     /** Fills array containing life values with all dead cells (0 is dead) */
@@ -187,13 +189,14 @@ public class GameActivity extends Activity{
                         setBoardSize(boardSizeMap.get(boardKey));
                         fillGridArray();
                         initializeGrid();
+                        gameStop.performClick();
                         lifeManager = new LifeManager(lifeGrid, gridAdapter, boardSize, boardSizeMap.get(boardKey));
                     }
                 });
             }
         });
 
-        final DropDownManager speedDropDown = new DropDownManager(GameActivity.this, speedList, boardKey);
+        final DropDownManager speedDropDown = new DropDownManager(GameActivity.this, speedList, evolutionKey);
         speed = (TextView) findViewById(R.id.generation_speed);
         speed.setOnClickListener(new View.OnClickListener() {
             @Override
