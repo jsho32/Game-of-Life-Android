@@ -40,7 +40,7 @@
                 android:background="#ffffff">
 
             <TextView
-                    android:text="@string/start_game"
+                    android:text="@string/start_game_main"
                     android:id="@+id/start"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
