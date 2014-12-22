@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.GridView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +27,7 @@ public class GameActivity extends Activity{
     private GridView lifeGrid;
     private TextView gameStart;
     private TextView gameStop;
+    private TextView gameClear;
     private TextView size;
     private TextView speed;
     private TextView shapes;
@@ -51,7 +53,7 @@ public class GameActivity extends Activity{
         lifeManager = new LifeManager(lifeGrid, gridAdapter, boardSize, boardSizeMap.get(boardKey));
     }
 
-    /** runs on the thread */
+    /** runs a thread that manages generation iterations */
     private void gameRun() {
         final Handler handler = new Handler();
         final Runnable runnable = new Runnable() {
@@ -153,9 +155,10 @@ public class GameActivity extends Activity{
                 gameStop.setClickable(true);
                 gameStop.setBackgroundColor(Color.BLACK);
                 gameStop.setTextColor(Color.WHITE);
-                setGridClickable(false);
+                Toast.makeText(GameActivity.this, "Life Begins!", Toast.LENGTH_SHORT).show();
             }
         });
+
         gameStop = (TextView) findViewById(R.id.game_stop);
         gameStop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,7 +170,25 @@ public class GameActivity extends Activity{
                 gameStart.setClickable(true);
                 gameStart.setBackgroundColor(Color.BLACK);
                 gameStart.setTextColor(Color.WHITE);
-                setGridClickable(true);
+                Toast.makeText(GameActivity.this, "Life Stopped!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        gameClear = (TextView) findViewById(R.id.game_clear);
+        gameClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isRunning = false;
+                fillGridArray();
+                initializeGrid();
+                lifeManager = new LifeManager(lifeGrid, gridAdapter, boardSize, boardSizeMap.get(boardKey));
+                gameStop.setClickable(false);
+                gameStart.setClickable(true);
+                gameStart.setBackgroundColor(Color.BLACK);
+                gameStart.setTextColor(Color.WHITE);
+                gameStop.setBackgroundColor(Color.BLACK);
+                gameStop.setTextColor(Color.WHITE);
+                Toast.makeText(GameActivity.this, "Board Refreshed!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -187,10 +208,7 @@ public class GameActivity extends Activity{
                         size.setBackgroundColor(Color.BLACK);
                         boardKey = sizesDropDown.getSelected();
                         setBoardSize(boardSizeMap.get(boardKey));
-                        fillGridArray();
-                        initializeGrid();
-                        gameStop.performClick();
-                        lifeManager = new LifeManager(lifeGrid, gridAdapter, boardSize, boardSizeMap.get(boardKey));
+                        gameClear.performClick();
                     }
                 });
             }
@@ -213,12 +231,5 @@ public class GameActivity extends Activity{
                 });
             }
         });
-    }
-
-    /** Sets each view within grid to clickable state true or false */
-    private void setGridClickable(boolean clickable) {
-        for (int i = 0; i < lifeGrid.getChildCount(); i++) {
-            lifeGrid.getChildAt(i).setClickable(clickable);
-        }
     }
 }
