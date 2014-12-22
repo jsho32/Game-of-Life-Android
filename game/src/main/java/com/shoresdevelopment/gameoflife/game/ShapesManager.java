@@ -1,7 +1,5 @@
 package com.shoresdevelopment.gameoflife.game;
 
-
-import android.util.Log;
 import android.widget.GridView;
 
 public class ShapesManager {
@@ -32,7 +30,6 @@ public class ShapesManager {
         }
         position = boardSize / 2;
         while (position < ((boardSize/2) + columnCount)) {
-            Log.e("Position ", String.valueOf(position));
             gridAdapter.setPositionValue(position, 1);
             gridAdapter.getView(position, gridView.getChildAt(position), gridView);
             position += 1;
