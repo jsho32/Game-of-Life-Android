@@ -34,6 +34,7 @@ public class GameActivity extends Activity{
     private boolean isRunning;
     private List<String> sizeList;
     private List<String> speedList;
+    private List<String> shapeList;
     private GameGridAdapter gridAdapter;
     private LifeManager lifeManager;
 
@@ -84,6 +85,9 @@ public class GameActivity extends Activity{
         speedList.add("Medium");
         speedList.add("Fast");
         speedList.add("Really Fast");
+
+        shapeList = new ArrayList<String>();
+        shapeList.add("Cross");
     }
 
     /** Set the values of features maps (board sizes, generation speeds) */
@@ -227,6 +231,26 @@ public class GameActivity extends Activity{
                         speed.setBackgroundColor(Color.BLACK);
                         evolutionKey = speedDropDown.getSelected();
                         setSpeed(speedMap.get(evolutionKey));
+                    }
+                });
+            }
+        });
+
+        final DropDownManager shapesDropDown = new DropDownManager(GameActivity.this, shapeList, shapeList.size());
+        shapes = (TextView) findViewById(R.id.shapes);
+        shapes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shapes.setBackgroundColor(Color.GRAY);
+                shapesDropDown.popupWindow.showAsDropDown(v, -5, 0);
+                shapesDropDown.popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                    @Override
+                    public void onDismiss() {
+                        shapes.setBackgroundColor(Color.BLACK);
+                        ShapesManager shapesManager = new ShapesManager(lifeGrid, gridAdapter, boardSize, boardSizeMap.get(boardKey));
+                        shapesManager.getShapeToAdd(shapeList.get(shapesDropDown.getSelected()));
+                        Toast.makeText(GameActivity.this, "Added " + shapeList.get(shapesDropDown.getSelected()), Toast.LENGTH_SHORT).show();
+                        shapesDropDown.setCurrentSelection(shapeList.size());
                     }
                 });
             }
