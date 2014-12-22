@@ -39,7 +39,7 @@ public class LifeManager {
     }
 
     /** Evaluates each cell and sets life accordingly, to next generation map */
-    public void getNewLife() {
+    private void getNewLife() {
         for(int i = 0; i < boardSize; i++) {
             int count = 0;
             if (i == 0) {
