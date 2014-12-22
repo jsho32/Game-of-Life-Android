@@ -3,29 +3,25 @@ package com.shoresdevelopment.gameoflife.game;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Point;
-import android.view.Display;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
+import android.view.*;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 public class GameGridAdapter extends BaseAdapter {
     private Context context;
     private int[] data = null;
-    private int columnCount;
     private int cellDimension;
 
     /** Constructor */
     public GameGridAdapter(Context context, int[] data, int columnCount) {
         this.context = context;
         this.data = data;
-        this.columnCount = columnCount;
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = windowManager.getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        cellDimension = (size.x - (columnCount*2)) / (columnCount + (columnCount/4));
+        cellDimension = (size.x) / (columnCount);
     }
 
     /** Gets the number of children */
@@ -50,29 +46,32 @@ public class GameGridAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, final View view, final ViewGroup parent) {
         final View cell;
+        final TextView life;
         if (view == null) {
-            cell = new View(context);
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            cell = inflater.inflate(R.layout.life_cell, null);
         } else {
             cell = view;
         }
+        life = (TextView) cell.findViewById(R.id.cell);
         cell.setClickable(true);
-        cell.setBackgroundColor(Color.GRAY);
-        cell.setLayoutParams(new AbsListView.LayoutParams((int) cellDimension, (int) cellDimension));
+        cell.setBackgroundColor(Color.BLACK);
+        cell.setLayoutParams(new AbsListView.LayoutParams(cellDimension, cellDimension));
 
         if (data[position] == 1) {
-            cell.setBackgroundColor(Color.RED);
+            life.setBackgroundColor(Color.RED);
         } else {
-            cell.setBackgroundColor(Color.GRAY);
+            life.setBackgroundColor(Color.GRAY);
         }
 
         cell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (data[position] == 0) {
-                    cell.setBackgroundColor(Color.RED);
+                    life.setBackgroundColor(Color.RED);
                     data[position] = 1;
                 } else {
-                    cell.setBackgroundColor(Color.GRAY);
+                    life.setBackgroundColor(Color.GRAY);
                     data[position] = 0;
                 }
             }
