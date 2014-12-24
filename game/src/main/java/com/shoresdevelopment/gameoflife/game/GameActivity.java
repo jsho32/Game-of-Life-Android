@@ -214,7 +214,21 @@ public class GameActivity extends Activity{
                         size.setBackgroundColor(Color.BLACK);
                         boardKey = sizesDropDown.getSelected();
                         setBoardSize(boardSizeMap.get(boardKey));
-                        gameClear.performClick();
+                        isRunning = false;
+                        fillGridArray();
+                        initializeGrid();
+                        lifeManager = new LifeManager(lifeGrid, gridAdapter, boardSize, boardSizeMap.get(boardKey));
+                        gameStop.setClickable(false);
+                        gameStart.setClickable(true);
+                        gameStart.setBackgroundColor(Color.BLACK);
+                        gameStart.setTextColor(Color.WHITE);
+                        gameStop.setBackgroundColor(Color.BLACK);
+                        gameStop.setTextColor(Color.WHITE);
+                        try {
+                            Toast.makeText(GameActivity.this, "Board sized to: " + sizeList.get(sizesDropDown.getSelected()), Toast.LENGTH_SHORT).show();
+                        } catch (IndexOutOfBoundsException e) {
+                            return;
+                        }
                     }
                 });
             }
@@ -233,6 +247,11 @@ public class GameActivity extends Activity{
                         speed.setBackgroundColor(Color.BLACK);
                         evolutionKey = speedDropDown.getSelected();
                         setSpeed(speedMap.get(evolutionKey));
+                        try {
+                            Toast.makeText(GameActivity.this, "Speed set at: " + speedList.get(speedDropDown.getSelected()), Toast.LENGTH_SHORT).show();
+                        } catch (IndexOutOfBoundsException e) {
+                            return;
+                        }
                     }
                 });
             }
@@ -250,8 +269,12 @@ public class GameActivity extends Activity{
                     public void onDismiss() {
                         shapes.setBackgroundColor(Color.BLACK);
                         ShapesManager shapesManager = new ShapesManager(lifeGrid, gridAdapter, boardSize, boardSizeMap.get(boardKey));
-                        shapesManager.getShapeToAdd(shapeList.get(shapesDropDown.getSelected()));
-                        Toast.makeText(GameActivity.this, "Added " + shapeList.get(shapesDropDown.getSelected()), Toast.LENGTH_SHORT).show();
+                        try {
+                            shapesManager.getShapeToAdd(shapeList.get(shapesDropDown.getSelected()));
+                            Toast.makeText(GameActivity.this, "Added " + shapeList.get(shapesDropDown.getSelected()), Toast.LENGTH_SHORT).show();
+                        } catch (IndexOutOfBoundsException e) {
+                            return;
+                        }
                         shapesDropDown.setCurrentSelection(shapeList.size());
                     }
                 });
