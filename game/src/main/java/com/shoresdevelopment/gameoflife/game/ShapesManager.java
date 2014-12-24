@@ -20,6 +20,8 @@ public class ShapesManager {
             addCross();
         } else if (shape.equals("Big Square")) {
             addBigSquare();
+        } else if (shape.equals("Small Square")) {
+            addSmallSquare();
         }
     }
 
@@ -44,6 +46,17 @@ public class ShapesManager {
                     position >= columnCount && position < (boardSize - columnCount)) {
                 gridAdapter.setPositionValue(position, 1);
                 gridAdapter.getView(position, gridView.getChildAt(position), gridView);
+            }
+        }
+    }
+
+    private void addSmallSquare() {
+        int squareWidth = columnCount / 4;
+        int startPosition = (boardSize / 2) + (columnCount / 2) - (columnCount * (squareWidth / 2)) - (squareWidth / 2);
+        for (int horizontal = startPosition; horizontal < (startPosition + squareWidth); horizontal++) {
+            for (int vertical = horizontal; vertical < (startPosition + (squareWidth * columnCount)); vertical+=columnCount) {
+                gridAdapter.setPositionValue(vertical, 1);
+                gridAdapter.getView(vertical, gridView.getChildAt(vertical), gridView);
             }
         }
     }
