@@ -18,6 +18,8 @@ public class ShapesManager {
     public void getShapeToAdd(String shape) {
         if (shape.equals("Cross")) {
             addCross();
+        } else if (shape.equals("Big Square")) {
+            addBigSquare();
         }
     }
 
@@ -33,6 +35,16 @@ public class ShapesManager {
             gridAdapter.setPositionValue(position, 1);
             gridAdapter.getView(position, gridView.getChildAt(position), gridView);
             position += 1;
+        }
+    }
+
+    private void addBigSquare() {
+        for (int position = 0; position < boardSize; position++) {
+            if ((position % columnCount) != 0 && (position % columnCount) != (columnCount -1) &&
+                    position >= columnCount && position < (boardSize - columnCount)) {
+                gridAdapter.setPositionValue(position, 1);
+                gridAdapter.getView(position, gridView.getChildAt(position), gridView);
+            }
         }
     }
 }
