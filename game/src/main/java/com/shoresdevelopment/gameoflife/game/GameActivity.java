@@ -91,6 +91,7 @@ public class GameActivity extends Activity{
         shapeList.add("Big Square");
         shapeList.add("Small Square");
         shapeList.add("X");
+        shapeList.add("Border");
     }
 
     /** Set the values of features maps (board sizes, generation speeds) */
