@@ -32,8 +32,8 @@ public class ShapesManager {
             gridAdapter.getView(position, gridView.getChildAt(position), gridView);
             position += columnCount;
         }
-        position = boardSize / 2;
-        while (position < ((boardSize/2) + columnCount)) {
+        position = (boardSize / 2) - (columnCount / 2);
+        while (position < (boardSize / 2) - (columnCount / 2) + columnCount) {
             gridAdapter.setPositionValue(position, 1);
             gridAdapter.getView(position, gridView.getChildAt(position), gridView);
             position += 1;
@@ -51,8 +51,11 @@ public class ShapesManager {
     }
 
     private void addSmallSquare() {
-        int squareWidth = columnCount / 4;
-        int startPosition = (boardSize / 2) + (columnCount / 2) - (columnCount * (squareWidth / 2)) - (squareWidth / 2);
+        int squareWidth = (int) ((columnCount / 4) + 0.5);
+        if (squareWidth % 2 == 0) {
+            squareWidth += 1;
+        }
+        int startPosition = (boardSize / 2) - (columnCount * (squareWidth / 2)) - (squareWidth / 2);
         for (int horizontal = startPosition; horizontal < (startPosition + squareWidth); horizontal++) {
             for (int vertical = horizontal; vertical < (startPosition + (squareWidth * columnCount)); vertical+=columnCount) {
                 gridAdapter.setPositionValue(vertical, 1);
