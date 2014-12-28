@@ -15,6 +15,7 @@ public class ShapesManager {
         this.boardSize = boardSize;
     }
 
+    /** Gets the shape to add by comparing shape name strings */
     public void getShapeToAdd(String shape) {
         if (shape.equals("Cross")) {
             addCross();
@@ -29,6 +30,7 @@ public class ShapesManager {
         }
     }
 
+    /** Adds a cross shape to game board */
     private void addCross() {
         int position = columnCount / 2;
         while (position < boardSize) {
@@ -44,6 +46,7 @@ public class ShapesManager {
         }
     }
 
+    /** Adds a large square shape by excluding the border */
     private void addBigSquare() {
         for (int position = 0; position < boardSize; position++) {
             if ((position % columnCount) != 0 && (position % columnCount) != (columnCount -1) &&
@@ -54,6 +57,7 @@ public class ShapesManager {
         }
     }
 
+    /** Adds a smaller square in the center of the board */
     private void addSmallSquare() {
         int squareWidth = (int) ((columnCount / 4) + 0.5);
         if (squareWidth % 2 == 0) {
@@ -68,6 +72,7 @@ public class ShapesManager {
         }
     }
 
+    /** Adds an X like shape across board */
     private void addX() {
         int position = 0;
         while (position < boardSize) {
@@ -83,6 +88,7 @@ public class ShapesManager {
         }
     }
 
+    /** Adds life to the boarder of the board, by excluding all center cells */
     private void addBorder() {
         for (int position = 0; position < boardSize; position++) {
             if ((position % columnCount) == 0 || (position % columnCount) == (columnCount -1) ||
