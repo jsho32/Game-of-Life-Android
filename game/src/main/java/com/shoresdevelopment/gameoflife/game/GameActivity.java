@@ -72,12 +72,12 @@ public class GameActivity extends Activity{
     /** Set the values of features lists (board sizes, generation speeds) */
     private void setLists() {
         sizeList = new ArrayList<String>();
-        sizeList.add("10 X 10");
-        sizeList.add("20 X 20");
-        sizeList.add("30 X 30");
-        sizeList.add("40 X 40");
-        sizeList.add("50 X 50");
-        sizeList.add("60 X 60");
+        sizeList.add("5 X 5");
+        sizeList.add("15 X 15");
+        sizeList.add("25 X 25");
+        sizeList.add("35 X 35");
+        sizeList.add("45 X 45");
+        sizeList.add("55 X 55");
 
         speedList = new ArrayList<String>();
         speedList.add("Really Slow");
@@ -95,12 +95,12 @@ public class GameActivity extends Activity{
     /** Set the values of features maps (board sizes, generation speeds) */
     private void setMaps() {
         boardSizeMap = new HashMap<Integer, Integer>();
-        boardSizeMap.put(0, 10);
-        boardSizeMap.put(1, 20);
-        boardSizeMap.put(2, 30);
-        boardSizeMap.put(3, 40);
-        boardSizeMap.put(4, 50);
-        boardSizeMap.put(5, 60);
+        boardSizeMap.put(0, 5);
+        boardSizeMap.put(1, 15);
+        boardSizeMap.put(2, 25);
+        boardSizeMap.put(3, 35);
+        boardSizeMap.put(4, 45);
+        boardSizeMap.put(5, 55);
 
         speedMap = new HashMap<Integer, Integer>();
         speedMap.put(0, 3000);
