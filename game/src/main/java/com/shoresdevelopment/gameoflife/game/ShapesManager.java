@@ -24,6 +24,8 @@ public class ShapesManager {
             addSmallSquare();
         } else if (shape.equals("X")) {
             addX();
+        } else if (shape.equals("Border")) {
+            addBorder();
         }
     }
 
@@ -78,6 +80,16 @@ public class ShapesManager {
             gridAdapter.setPositionValue(position, 1);
             gridAdapter.getView(position, gridView.getChildAt(position), gridView);
             position += columnCount - 1;
+        }
+    }
+
+    private void addBorder() {
+        for (int position = 0; position < boardSize; position++) {
+            if ((position % columnCount) == 0 || (position % columnCount) == (columnCount -1) ||
+                    position < columnCount || position >= (boardSize - columnCount)) {
+                gridAdapter.setPositionValue(position, 1);
+                gridAdapter.getView(position, gridView.getChildAt(position), gridView);
+            }
         }
     }
 }
