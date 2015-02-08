@@ -2,6 +2,8 @@ package com.shoresdevelopment.gameoflife.game;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +40,7 @@ public class GameActivity extends Activity{
     private List<String> shapeList;
     private GameGridAdapter gridAdapter;
     private LifeManager lifeManager;
+    MediaPlayer mp;
 
     /** Called when activity is first created */
     @Override
@@ -52,6 +56,8 @@ public class GameActivity extends Activity{
         fillGridArray();
         initializeGrid();
         lifeManager = new LifeManager(lifeGrid, gridAdapter, boardSize, boardSizeMap.get(boardKey));
+        mp = MediaPlayer.create(getApplicationContext(), R.raw.iteration);
+        mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
     }
 
     /** runs a thread that manages generation iterations */
@@ -61,7 +67,12 @@ public class GameActivity extends Activity{
             @Override
             public void run() {
                 if (isRunning) {
+                    if (mp.getCurrentPosition() > 0) {
+                        mp.pause();
+                        mp.seekTo(0);
+                    }
                     lifeManager.setLife();
+                    mp.start();
                     handler.postDelayed(this, evolutionSpeed);
                 }
             }
