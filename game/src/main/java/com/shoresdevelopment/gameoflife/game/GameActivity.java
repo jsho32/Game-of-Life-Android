@@ -60,6 +60,18 @@ public class GameActivity extends Activity{
         mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        isRunning = false;
+        gameStop.setBackgroundColor(Color.RED);
+        gameStop.setTextColor(Color.BLACK);
+        gameStop.setClickable(false);
+        gameStart.setClickable(true);
+        gameStart.setBackgroundColor(Color.BLACK);
+        gameStart.setTextColor(Color.WHITE);
+    }
+
     /** runs a thread that manages generation iterations */
     private void gameRun() {
         final Handler handler = new Handler();
