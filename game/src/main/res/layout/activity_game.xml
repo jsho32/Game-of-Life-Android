@@ -15,6 +15,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/header_text_size"
+                android:textColor="#ffffff"
                 android:text="@string/game_header"
                 android:textStyle="bold"/>
 
