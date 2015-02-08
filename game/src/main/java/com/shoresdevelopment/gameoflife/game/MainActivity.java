@@ -1,10 +1,9 @@
 package com.shoresdevelopment.gameoflife.game;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -21,30 +20,6 @@ public class MainActivity extends ActionBarActivity {
         initializeTextViews();
     }
 
-    /** Creates the options menu */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    /** When options menu item is selected */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     /** Initializes text views and sets on click listeners with intents to respective activities */
     private void initializeTextViews() {
         start = (TextView) findViewById(R.id.start);
@@ -59,7 +34,8 @@ public class MainActivity extends ActionBarActivity {
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                Uri uri = Uri.parse("http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
         });
