@@ -2,10 +2,8 @@ package com.shoresdevelopment.gameoflife.game;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
+import android.graphics.Point;
+import android.view.*;
 import android.widget.*;
 
 import java.util.List;
@@ -32,8 +30,13 @@ public class DropDownManager {
         ListView listViewSizes = new ListView(context);
         listViewSizes.setAdapter(sizesAdapter(popUpContents));
 
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = windowManager.getDefaultDisplay();
+        Point screenSize = new Point();
+        display.getSize(screenSize);
+
         popupWindow.setFocusable(true);
-        popupWindow.setWidth(400);
+        popupWindow.setWidth(screenSize.x / 2);
         popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
         popupWindow.setContentView(listViewSizes);
 
@@ -53,16 +56,22 @@ public class DropDownManager {
                 }
 
                 final TextView listItem = (TextView) convertView.findViewById(R.id.list_item);
-                if (position == currentSelection) {
+
+                if (position == 0) {
+                    listItem.setBackgroundColor(Color.RED);
+                } else if (position == currentSelection) {
                     listItem.setBackgroundColor(Color.GRAY);
                 } else {
                     listItem.setBackgroundColor(Color.BLACK);
                 }
+
                 listItem.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        currentSelection = position;
-                        popupWindow.dismiss();
+                        if (position != 0) {
+                            currentSelection = position;
+                            popupWindow.dismiss();
+                        }
                     }
                 });
 
