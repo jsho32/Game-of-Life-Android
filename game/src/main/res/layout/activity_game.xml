@@ -1,203 +1,103 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@drawable/cells_vert"
+              android:background="#000000"
               android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="#EE575757"
-            android:gravity="center"
-            android:padding="@dimen/activity_default_margin">
+            android:id="@+id/header"
+            android:gravity="center_vertical"
+            android:layout_alignParentTop="true">
 
-        <TextView
+        <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/header_text_size"
-                android:textColor="#ffffff"
-                android:text="@string/game_header"
-                android:textStyle="bold"/>
+                android:id="@+id/about"
+                android:src="@drawable/about_button"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:contentDescription="@string/about_game"/>
 
-    </LinearLayout>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/header_banner"
+                android:src="@drawable/gol_header"
+                android:layout_centerInParent="true"
+                android:contentDescription="@string/game_header"/>
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/settings"
+                android:src="@drawable/settings_button"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:contentDescription="@string/settings"/>
+
+    </RelativeLayout>
+
+    <GridView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/lifeGrid"
+            android:layout_below="@+id/header"
+            android:numColumns="20"
+            android:gravity="center"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="0dp"
+            android:horizontalSpacing="0dp" />
 
     <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/activity_default_margin"
-            android:layout_marginBottom="@dimen/activity_default_margin">
+            android:gravity="center"
+            android:layout_alignParentBottom="true">
 
-        <LinearLayout
+        <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:id="@+id/game_start"
+               android:src="@drawable/play_button"
+               android:contentDescription="@string/start_game"/>
+
+        <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/activity_default_margin"
-                android:layout_marginStart="@dimen/activity_default_margin"
-                android:layout_marginRight="@dimen/activity_default_margin"
-                android:layout_marginEnd="@dimen/activity_default_margin"
-                android:padding="1dp"
-                android:background="#ffffff">
+                android:id="@+id/game_stop"
+                android:src="@drawable/pause_button"
+                android:contentDescription="@string/stop_game"/>
 
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#000000"
-                    android:padding="@dimen/button_default_margin"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/shapes"
-                    android:textColor="#ffffff"
-                    android:id="@+id/shapes"
-                    android:clickable="true"/>
-
-        </LinearLayout>
-
-        <LinearLayout
+        <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/activity_default_margin"
-                android:layout_marginStart="@dimen/activity_default_margin"
-                android:layout_marginRight="@dimen/activity_default_margin"
-                android:layout_marginEnd="@dimen/activity_default_margin"
-                android:padding="1dp"
-                android:background="#ffffff">
+                android:id="@+id/game_clear"
+                android:src="@drawable/clear_button"
+                android:contentDescription="@string/clear_game"/>
 
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#000000"
-                    android:padding="@dimen/button_default_margin"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/speed"
-                    android:textColor="#ffffff"
-                    android:id="@+id/generation_speed"
-                    android:clickable="true"/>
-
-        </LinearLayout>
-
-        <LinearLayout
+        <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/activity_default_margin"
-                android:layout_marginStart="@dimen/activity_default_margin"
-                android:layout_marginRight="@dimen/activity_default_margin"
-                android:layout_marginEnd="@dimen/activity_default_margin"
-                android:padding="1dp"
-                android:background="#ffffff">
+                android:id="@+id/board_size"
+                android:src="@drawable/size_button"
+                android:contentDescription="@string/board_size"/>
 
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#000000"
-                    android:padding="@dimen/button_default_margin"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/board_size"
-                    android:textColor="#ffffff"
-                    android:id="@+id/board_size"
-                    android:clickable="true"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/generation_speed"
+                android:src="@drawable/speed_button"
+                android:contentDescription="@string/speed"/>
 
-        </LinearLayout>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/shapes"
+                android:src="@drawable/shapes_button"
+                android:contentDescription="@string/shapes"/>
 
     </LinearLayout>
-
-    <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center">
-
-        <GridView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/lifeGrid"
-                android:numColumns="20"
-                android:paddingLeft="@dimen/activity_default_margin"
-                android:paddingStart="@dimen/activity_default_margin"
-                android:paddingRight="@dimen/activity_default_margin"
-                android:paddingEnd="@dimen/activity_default_margin"
-                android:gravity="center"
-                android:stretchMode="spacingWidthUniform"
-                android:verticalSpacing="0dp"
-                android:horizontalSpacing="0dp" />
-
-        <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
-
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center"
-                    android:layout_margin="@dimen/activity_default_margin"
-                    android:padding="1dp"
-                    android:background="#ffffff">
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#000000"
-                        android:padding="@dimen/button_default_margin"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/start_game"
-                        android:textColor="#ffffff"
-                        android:id="@+id/game_start"
-                        android:clickable="true"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center"
-                    android:layout_margin="@dimen/activity_default_margin"
-                    android:padding="1dp"
-                    android:background="#ffffff">
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#000000"
-                        android:padding="@dimen/button_default_margin"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/stop_game"
-                        android:textColor="#ffffff"
-                        android:id="@+id/game_stop"
-                        android:clickable="true"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center"
-                    android:layout_margin="@dimen/activity_default_margin"
-                    android:padding="1dp"
-                    android:background="#ffffff">
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#000000"
-                        android:padding="@dimen/button_default_margin"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/clear_game"
-                        android:textColor="#ffffff"
-                        android:id="@+id/game_clear"
-                        android:clickable="true"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+</RelativeLayout>
