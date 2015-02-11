@@ -6,7 +6,7 @@ import android.graphics.Point;
 import android.view.*;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 public class GameGridAdapter extends BaseAdapter {
     private Context context;
@@ -21,7 +21,7 @@ public class GameGridAdapter extends BaseAdapter {
         Display display = windowManager.getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        cellDimension = (size.x) / (columnCount);
+        cellDimension = (size.x / columnCount);
     }
 
     /** Gets the number of children */
@@ -45,33 +45,31 @@ public class GameGridAdapter extends BaseAdapter {
     /** Sets and gets the view of an item associated with a position in data array */
     @Override
     public View getView(final int position, final View view, final ViewGroup parent) {
-        final View cell;
-        final TextView life;
+        final ImageView cell;
         if (view == null) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            cell = inflater.inflate(R.layout.life_cell, null);
+            cell = new ImageView(context);
         } else {
-            cell = view;
+            cell = (ImageView) view;
         }
-        life = (TextView) cell.findViewById(R.id.cell);
+
         cell.setClickable(true);
-        cell.setBackgroundColor(Color.BLACK);
-        cell.setLayoutParams(new AbsListView.LayoutParams(cellDimension, cellDimension));
+        cell.setBackgroundColor(Color.TRANSPARENT);
+        cell.setLayoutParams(new AbsListView.LayoutParams(cellDimension, cellDimension, ViewGroup.LayoutParams.MATCH_PARENT));
 
         if (data[position] == 1) {
-            life.setBackgroundColor(Color.RED);
+            cell.setImageResource(R.drawable.red_circle);
         } else {
-            life.setBackgroundColor(Color.GRAY);
+            cell.setImageResource(Color.TRANSPARENT);
         }
 
         cell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (data[position] == 0) {
-                    life.setBackgroundColor(Color.RED);
+                    cell.setImageResource(R.drawable.red_circle);
                     data[position] = 1;
                 } else {
-                    life.setBackgroundColor(Color.GRAY);
+                    cell.setImageResource(Color.TRANSPARENT);
                     data[position] = 0;
                 }
             }
