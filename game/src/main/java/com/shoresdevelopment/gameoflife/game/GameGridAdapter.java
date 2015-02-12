@@ -55,7 +55,7 @@ public class GameGridAdapter extends BaseAdapter {
         }
 
         cell.setClickable(true);
-        cell.setLayoutParams(new AbsListView.LayoutParams(cellDimension, cellDimension, ViewGroup.LayoutParams.MATCH_PARENT));
+        cell.setLayoutParams(new AbsListView.LayoutParams(cellDimension, cellDimension));
 
         if (data[position] == 1) {
             cell.setImageResource(imageResource);
