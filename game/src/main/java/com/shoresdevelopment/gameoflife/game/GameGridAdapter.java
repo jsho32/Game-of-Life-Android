@@ -12,11 +12,13 @@ public class GameGridAdapter extends BaseAdapter {
     private Context context;
     private int[] data = null;
     private int cellDimension;
+    private int imageResource;
 
     /** Constructor */
-    public GameGridAdapter(Context context, int[] data, int columnCount) {
+    public GameGridAdapter(Context context, int[] data, int columnCount, int imageResource) {
         this.context = context;
         this.data = data;
+        this.imageResource = imageResource;
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = windowManager.getDefaultDisplay();
         Point size = new Point();
@@ -53,11 +55,10 @@ public class GameGridAdapter extends BaseAdapter {
         }
 
         cell.setClickable(true);
-        cell.setBackgroundColor(Color.TRANSPARENT);
         cell.setLayoutParams(new AbsListView.LayoutParams(cellDimension, cellDimension, ViewGroup.LayoutParams.MATCH_PARENT));
 
         if (data[position] == 1) {
-            cell.setImageResource(R.drawable.red_circle);
+            cell.setImageResource(imageResource);
         } else {
             cell.setImageResource(Color.TRANSPARENT);
         }
@@ -66,7 +67,7 @@ public class GameGridAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 if (data[position] == 0) {
-                    cell.setImageResource(R.drawable.red_circle);
+                    cell.setImageResource(imageResource);
                     data[position] = 1;
                 } else {
                     cell.setImageResource(Color.TRANSPARENT);
