@@ -2,7 +2,6 @@ package com.shoresdevelopment.gameoflife.game;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.view.*;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
@@ -15,15 +14,11 @@ public class GameGridAdapter extends BaseAdapter {
     private int imageResource;
 
     /** Constructor */
-    public GameGridAdapter(Context context, int[] data, int columnCount, int imageResource) {
+    public GameGridAdapter(Context context, int[] data, int cellDimension, int imageResource) {
         this.context = context;
         this.data = data;
         this.imageResource = imageResource;
-        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        Display display = windowManager.getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        cellDimension = (size.x / columnCount);
+        this.cellDimension = cellDimension;
     }
 
     /** Gets the number of children */
