@@ -10,6 +10,8 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
@@ -282,9 +284,21 @@ public class GameActivity extends Activity {
      */
     private void initializeGrid() {
         lifeGrid = (GridView) findViewById(R.id.lifeGrid);
-        gridAdapter = new GameGridAdapter(GameActivity.this, boardArray, boardSizeMap.get(boardKey), cellColorsMap.get(cellColorKey));
+
+        WindowManager windowManager = (WindowManager) GameActivity.this.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics metrics = new DisplayMetrics();
+        windowManager.getDefaultDisplay().getMetrics(metrics);
+
+        double cellDimension = (double) metrics.widthPixels / (double) boardSizeMap.get(boardKey);
+
+        gridAdapter = new GameGridAdapter(GameActivity.this, boardArray, (int) cellDimension, cellColorsMap.get(cellColorKey));
+        lifeGrid.setColumnWidth((int) cellDimension);
+
+        double padding = ((cellDimension - Math.floor(cellDimension)) * boardSizeMap.get(boardKey)) / 2;
+
+        Log.e("PADDING", String.valueOf(padding));
+        lifeGrid.setPadding((int) padding, (int) padding, (int) padding, (int) padding);
         lifeGrid.setAdapter(gridAdapter);
-        lifeGrid.setNumColumns(boardSizeMap.get(boardKey));
     }
 
     /**
